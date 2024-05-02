@@ -1,0 +1,86 @@
+<resources>
+    <string name="app_name">NutriFit</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="tiene_ya_una_cuenta_creada">¿Tiene ya una cuenta creada?</string>
+    <string name="login">LOGIN</string>
+    <string name="ha_olvidado_su_contrase_a">¿HA OLVIDADO SU CONTRASEÑA?</string>
+    <string name="o">O Iniciar Sesion Con</string>
+    <string name="nombre">Nombre</string>
+    <string name="apellidos">Apellidos</string>
+    <string name="emailRegister">Email</string>
+    <string name="contrase_a">Contraseña</string>
+    <string name="continuar">Continuar</string>
+    <string name="datos_personales">Datos Personales</string>
+    <string name="nuevo_usuario_registrate_ahora">¿Nuevo Usuario? Registrate Ahora</string>
+    <string name="volver"> VOLVER</string>
+    <string name="datos_biom_tricos">Datos Biométricos</string>
+    <string name="edad">Edad</string>
+    <string name="factor_actividad">Nivel Actividad</string>
+    <string name="peso">Peso (En kg)</string>
+    <string name="objetivo">Objetivo</string>
+    <string name="altura">Altura (En cm)</string>
+    <string name="objetivo_lbl">Objetivo</string>
+    <string name="nivel_de_actividadlbl">Nivel de Actividad</string>
+    <string name="recordar">recordar usuario</string>
+    <string name="sexo">Sexo</string>
+    <string name="registrar">Registrar</string>
+    <string name="introduce_el_correo_al_que_enviar_el_cambio_de_contrase_a">Introduce el correo al que enviar el cambio de contraseña</string>
+    <string name="cambiar_contrase_a">Cambiar Contraseña</string>
+    <string name="resetear_contrase_a">Restablecer Contraseña</string>
+    <string name="volverResetPass">Volver</string>
+    <string name="nutrifit">NutriFit</string>
+    <string name="V">V</string>
+    <string name="back"><![CDATA[<-]]></string>
+    <string name="backActivity"><![CDATA[<]]></string>
+    <string name="forward"><![CDATA[->]]></string>
+    <string name="lun">LUN</string>
+    <string name="mar">MAR</string>
+    <string name="mi">MIÉ</string>
+    <string name="jue">JUE</string>
+    <string name="vie">VIE</string>
+    <string name="s_b">SÁB</string>
+    <string name="dom">DOM</string>
+    <string name="desayuno">Desayuno</string>
+    <string name="almuerzo">Almuerzo</string>
+    <string name="merienda">Merienda</string>
+    <string name="cena">Cena</string>
+    <string name="a_adir_comida">Añadir Comida</string>
+    <string name="proteina">Proteinas:</string>
+    <string name="calorias">Calorias:</string>
+    <string name="ingresar_un_alimento">Ingresar un alimento</string>
+    <string name="comidas">COMIDAS</string>
+    <string name="agregar_una_comida">Agregar una comida</string>
+    <string name="aun_no_ha_a_adido_ninguna_comida">Aun no ha añadido ninguna comida</string>
+    <string name="comida">Comida</string>
+    <string name="proteinas">Proteinas</string>
+    <string name="calorias1">Calorias</string>
+    <string name="alimentos_template">Alimentos: %1$s</string>
+    <string name="cantidad_template">Cantidad: %1$d</string>
+    <string name="kcal_template">Kcal: %1$.2f</string>
+    <string name="proteinas_template">Proteínas: %1$.2f</string>
+    <string name="unidad">Unidad</string>
+    <string name="cantidad">Cantidad</string>
+    <string name="a_adir_alimento">Añadir Alimento</string>
+    <string name="aun_no_hay_alimentos_a_adidos">Aun no hay alimentos añadidos</string>
+    <string-array name="factor_actividad_values">
+            <item>Poco o ningún ejercicio</item>
+            <item>Ejercicio ligero (1-3 días a la semana)</item>
+            <item>Ejercicio moderado (3-5 días a la semana)</item>
+            <item>Ejercicio fuerte (6-7 días a la semana)</item>
+            <item>Ejercicio muy fuerte (dos veces al día, entrenamientos muy duros)</item>
+        </string-array>
+
+    <string-array name="array_objetivo">
+        <item>Bajar Peso</item>
+        <item>Subir Peso</item>
+        <item>Recomposición Corporal</item>
+        <item>Mantener Peso</item>
+    </string-array>
+
+    <string-array name="array_sexo">
+        <item>Masculino</item>
+        <item>Femenino</item>
+    </string-array>
+
+</resources>
