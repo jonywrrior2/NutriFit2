@@ -80,6 +80,12 @@
             <item>Ejercicio muy fuerte (dos veces al día, entrenamientos muy duros)</item>
         </string-array>
 
+    <string-array name="tipo_sugerencia">
+        <item>Proponer mejora para la app</item>
+        <item>Notificar Error en la app</item>
+        <item>Otros</item>
+    </string-array>
+
     <string-array name="array_objetivo">
         <item>Bajar Peso</item>
         <item>Subir Peso</item>

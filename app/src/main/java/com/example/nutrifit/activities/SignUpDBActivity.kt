@@ -132,18 +132,18 @@ class SignUpDBActivity : AppCompatActivity() {
                     id: Long
                 ) {
                     val selectedFactor = parent.getItemAtPosition(position).toString()
-                    // Aquí puedes hacer algo con el factor de actividad seleccionado
+
                 }
 
                 override fun onNothingSelected(parent: AdapterView<*>) {
-                    // Manejar la situación en la que no se selecciona nada
+
                 }
             }
 
-        // Obtener referencia al Spinner de Objetivo
+
         objetivoSpinner = findViewById(R.id.objetivoSpinner)
 
-        // Crear un ArrayAdapter usando el array de strings definido en strings.xml para Objetivo
+
         val objetivoAdapter = ArrayAdapter.createFromResource(
             this,
             R.array.array_objetivo,
@@ -152,7 +152,7 @@ class SignUpDBActivity : AppCompatActivity() {
         objetivoAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         objetivoSpinner.adapter = objetivoAdapter
 
-        // Manejar la selección del Spinner de Objetivo
+
         objetivoSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
                 parent: AdapterView<*>,
@@ -161,18 +161,18 @@ class SignUpDBActivity : AppCompatActivity() {
                 id: Long
             ) {
                 val selectedObjetivo = parent.getItemAtPosition(position).toString()
-                // Aquí puedes hacer algo con el objetivo seleccionado
+
             }
 
             override fun onNothingSelected(parent: AdapterView<*>) {
-                // Manejar la situación en la que no se selecciona nada
+
             }
         }
 
 
     }
 
-    // Función para mostrar el diálogo
+
     private fun showDialog(title: String, message: String) {
         val builder = AlertDialog.Builder(this)
         builder.setTitle(title)
@@ -185,23 +185,23 @@ class SignUpDBActivity : AppCompatActivity() {
     }
 
     private fun registrarYAutenticarUsuario(email: String, contrasenha: String, user: User) {
-        // Registrar al usuario en Firebase Authentication
+
         FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, contrasenha)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    // Registro exitoso, obtenemos el usuario actual
+
                     val firebaseUser = FirebaseAuth.getInstance().currentUser
                     if (firebaseUser != null) {
-                        // Ajustar las calorías y proteínas según el objetivo seleccionado
+
                         ajustarCaloriasYProteinas(user)
 
                         val calorias = user.calorias
                         val proteinas = user.proteinas
 
-                        // Guardamos el usuario en Firestore
+
                         guardarUsuarioEnFirestore(user)
 
-                        // Mostrar mensaje de éxito y redirigir al usuario a la pantalla de inicio de sesión
+
                         mostrarMensajeExito(calorias, proteinas)
 
                     } else {
@@ -231,8 +231,7 @@ class SignUpDBActivity : AppCompatActivity() {
                     "Usuario registrado exitosamente",
                     Toast.LENGTH_SHORT
                 ).show()
-                // Éxito al guardar el usuario en Firestore
-                // Después de guardar el usuario en Firestore, puedes redirigir al usuario a otra actividad si es necesario
+
             }
             .addOnFailureListener { e ->
                 Toast.makeText(
@@ -240,11 +239,11 @@ class SignUpDBActivity : AppCompatActivity() {
                     "Error al registrar el usuario en Firestore: ${e.message}",
                     Toast.LENGTH_SHORT
                 ).show()
-                // Error al guardar el usuario en Firestore
+
             }
     }
 
-    // Función para ajustar las calorías y proteínas según el objetivo seleccionado
+
     private fun ajustarCaloriasYProteinas(user: User) {
         val tmb: Double = if (user.sexo == "Masculino") {
             66.4730 + (13.7516 * user.peso) + (5.0033 * user.altura) - (6.7550 * user.edad)
@@ -302,7 +301,7 @@ class SignUpDBActivity : AppCompatActivity() {
                 "Por favor, inicie sesión.")
         builder.setPositiveButton("OK") { dialog, _ ->
             dialog.dismiss()
-            // Redirigir al usuario a la pantalla de inicio de sesión
+
             val intent = Intent(this@SignUpDBActivity, LoginActivity::class.java)
             startActivity(intent)
         }
