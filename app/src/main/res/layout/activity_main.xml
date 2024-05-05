@@ -137,6 +137,7 @@
         android:layout_height="600dp"
         android:orientation="vertical"
         android:background="@color/grayOscuro">
+
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="75dp"
@@ -489,8 +490,101 @@
                 </LinearLayout>
 
             </LinearLayout>
+
         </androidx.cardview.widget.CardView>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/grayOscuro">
+            <LinearLayout
+                android:id="@+id/bottomNavigation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_alignParentBottom="true"
+                android:background="@color/gray">
+
+                <!-- Primer elemento del menú -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="8dp">
+
+                    <ImageButton
+                        android:id="@+id/homeButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:contentDescription="@string/cerrar_sesi_n"
+                        android:src="@drawable/ic_logout" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/cerrar_sesi_n"
+                        android:textColor="@color/white"
+                        android:textSize="17sp"/>
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="8dp">
+
+                    <ImageButton
+                        android:id="@+id/searchButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_sugerencias"
+                        android:background="@null"
+                        android:contentDescription=""/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/sugerencias"
+                        android:textColor="@color/white"
+                        android:textSize="17sp"/>
+                </LinearLayout>
+
+                <!-- Tercer elemento del menú -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="8dp">
+
+                    <ImageButton
+                        android:id="@+id/profileButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_profile"
+                        android:background="@null"
+                        android:contentDescription=""/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/perfil"
+                        android:textColor="@color/white"
+                        android:textSize="17sp"/>
+                </LinearLayout>
+            </LinearLayout>
+        </RelativeLayout>
+
+
     </LinearLayout>
+
 
 
 </LinearLayout>
