@@ -36,6 +36,8 @@ class MainActivity : AppCompatActivity(), CalendarioAdapter.OnItemListener {
         initWidgets()
         mAuth = FirebaseAuth.getInstance()
         val cerrarSesionButton: ImageButton = findViewById(R.id.cerrarSesionButton)
+        val ticketButton : ImageButton = findViewById(R.id.sugerenciasButton)
+
         cerrarSesionButton.setOnClickListener {
             mAuth.signOut()
 
@@ -44,6 +46,15 @@ class MainActivity : AppCompatActivity(), CalendarioAdapter.OnItemListener {
 
             finish()
         }
+
+        ticketButton.setOnClickListener{
+            val intent = Intent(this@MainActivity, SugerenciasActivity::class.java)
+            startActivity(intent)
+
+            finish()
+        }
+
+
         //Aqui cogemos la fecha de vuelta del Activity de añadir comida
         selectedLongClickDate = intent.getStringExtra("fechaSeleccionada")?.let { LocalDate.parse(it) }
         if (CalendarioUtils.selectedDate == null) {
