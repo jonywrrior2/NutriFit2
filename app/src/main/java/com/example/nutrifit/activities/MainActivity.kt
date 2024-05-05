@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.nutrifit.R
 import com.example.nutrifit.calendario.CalendarioAdapter
 import com.example.nutrifit.calendario.CalendarioUtils
+import com.google.firebase.auth.FirebaseAuth
 import java.time.LocalDate
 
 class MainActivity : AppCompatActivity(), CalendarioAdapter.OnItemListener {
@@ -25,11 +27,23 @@ class MainActivity : AppCompatActivity(), CalendarioAdapter.OnItemListener {
     private lateinit var pMeriendaTextView: TextView
     private lateinit var cCenaTextView: TextView
     private lateinit var pCenaTextView: TextView
+    private lateinit var mAuth: FirebaseAuth
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         initWidgets()
+        mAuth = FirebaseAuth.getInstance()
+        val cerrarSesionButton: ImageButton = findViewById(R.id.cerrarSesionButton)
+        cerrarSesionButton.setOnClickListener {
+            mAuth.signOut()
+
+            val intent = Intent(this@MainActivity, LoginActivity::class.java)
+            startActivity(intent)
+
+            finish()
+        }
         //Aqui cogemos la fecha de vuelta del Activity de añadir comida
         selectedLongClickDate = intent.getStringExtra("fechaSeleccionada")?.let { LocalDate.parse(it) }
         if (CalendarioUtils.selectedDate == null) {
