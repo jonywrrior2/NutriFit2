@@ -103,7 +103,7 @@ class   AnhadirComidaActivity : AppCompatActivity() {
             putExtra ("fechaSeleccionada", selectedLongClickDateStr)
         }
         startActivity(intent)
-
+        finish()
     }
 
     fun openActivityNutrientes(alimento: Alimento, tipo: String?) {
@@ -117,7 +117,7 @@ class   AnhadirComidaActivity : AppCompatActivity() {
             putExtra("fechaSeleccionada", selectedLongClickDateStr)
         }
         startActivity(intent)
-
+        finish()
 
     }
 

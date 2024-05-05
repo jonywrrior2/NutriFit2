@@ -76,6 +76,13 @@
             android:exported="true"
             android:theme="@style/Theme.NutriFit">
 
+
+        </activity><activity
+            android:name=".activities.SugerenciasActivity"
+            android:exported="true"
+            android:theme="@style/Theme.NutriFit">
+
+
         </activity>
     </application>
 

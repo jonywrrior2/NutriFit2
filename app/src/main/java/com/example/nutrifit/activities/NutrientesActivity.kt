@@ -57,6 +57,7 @@ class NutrientesActivity : AppCompatActivity() {
             }
 
             startActivity(intent)
+            finish()
 
         }
 
@@ -96,6 +97,7 @@ class NutrientesActivity : AppCompatActivity() {
             }
 
             startActivity(intent)
+            finish()
         }
 
 
