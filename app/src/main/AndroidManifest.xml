@@ -77,13 +77,24 @@
             android:theme="@style/Theme.NutriFit">
 
 
-        </activity><activity
+        </activity>
+
+        <activity
             android:name=".activities.SugerenciasActivity"
             android:exported="true"
             android:theme="@style/Theme.NutriFit">
 
 
         </activity>
+
+        <activity
+            android:name=".activities.MisSugerenciasActivity"
+            android:exported="true"
+            android:theme="@style/Theme.NutriFit">
+
+
+        </activity>
+
     </application>
 
 </manifest>

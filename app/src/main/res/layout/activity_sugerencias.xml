@@ -35,7 +35,7 @@
             android:weightSum="2">
 
             <Button
-                android:id="@+id/txtSugerencia"
+                android:id="@+id/btnSugerencia"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -49,7 +49,7 @@
                 android:textSize="27sp" />
 
             <Button
-                android:id="@+id/txtTusSugerencias"
+                android:id="@+id/btnTusSugerencias"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/mis_tickets"
