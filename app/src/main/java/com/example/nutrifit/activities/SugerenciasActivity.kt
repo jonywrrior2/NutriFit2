@@ -26,6 +26,17 @@ class SugerenciasActivity: AppCompatActivity() {
         val enviarTicket: Button = findViewById(R.id.enviarTicket)
         val comentarioEditText: EditText = findViewById(R.id.cajetinComentario)
 
+        val btnSugerencia: Button = findViewById(R.id.btnSugerencia)
+        val btnTusSugerencias: Button = findViewById(R.id.btnTusSugerencias)
+        btnSugerencia.setBackgroundResource(R.color.grayOscuro)
+
+
+        btnTusSugerencias.setOnClickListener {
+            val intent = Intent(this, MisSugerenciasActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
         val tipoSugerenciaAdapter = ArrayAdapter.createFromResource(
             this,
             R.array.tipo_sugerencia,
