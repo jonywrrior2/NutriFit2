@@ -37,6 +37,7 @@ class MainActivity : AppCompatActivity(), CalendarioAdapter.OnItemListener {
         mAuth = FirebaseAuth.getInstance()
         val cerrarSesionButton: ImageButton = findViewById(R.id.cerrarSesionButton)
         val ticketButton : ImageButton = findViewById(R.id.sugerenciasButton)
+        val perfilButton : ImageButton = findViewById(R.id.perfilButton)
 
         cerrarSesionButton.setOnClickListener {
             mAuth.signOut()
@@ -49,6 +50,13 @@ class MainActivity : AppCompatActivity(), CalendarioAdapter.OnItemListener {
 
         ticketButton.setOnClickListener{
             val intent = Intent(this@MainActivity, SugerenciasActivity::class.java)
+            startActivity(intent)
+
+            finish()
+        }
+
+        perfilButton.setOnClickListener{
+            val intent = Intent(this@MainActivity, PerfilActivity::class.java)
             startActivity(intent)
 
             finish()

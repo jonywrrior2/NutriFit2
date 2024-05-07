@@ -94,6 +94,13 @@
 
 
         </activity>
+        <activity
+            android:name=".activities.PerfilActivity"
+            android:exported="true"
+            android:theme="@style/Theme.NutriFit">
+
+
+        </activity>
 
     </application>
 

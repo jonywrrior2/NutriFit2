@@ -72,6 +72,7 @@
     <string name="tipo_de_sugerencia">tipo de sugerencia</string>
     <string name="comentario">Comentario</string>
     <string name="escribe_tus_comentarios_u_observaciones_aqu">Escribe tus comentarios u observaciones aquí...</string>
+    <string name="mi_perfil">Mi perfil</string>
     <string-array name="factor_actividad_values">
             <item>Poco o ningún ejercicio</item>
             <item>Ejercicio ligero (1-3 días a la semana)</item>
