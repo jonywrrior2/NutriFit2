@@ -55,11 +55,15 @@ class MisSugerenciasActivity: AppCompatActivity() {
 
     private fun obtenerTicketsUsuarioActual() {
         DatabaseManagerTickets.getUserTickets(
-            onSuccess = {
+            onSuccess = { tickets ->
+                ticketsList.clear()
+                ticketsList.addAll(tickets)
+                ticketsAdapter.notifyDataSetChanged()
             },
             onFailure = { exception ->
-                Log.e("DatabaseManagerMenu", "Error al obtener los menús del usuario actual: $exception")
+                Log.e("MisSugerenciasActivity", "Error al obtener los tickets del usuario actual: $exception")
             }
         )
     }
+
 }

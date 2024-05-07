@@ -67,22 +67,18 @@
 
     </LinearLayout>
 
-    <androidx.cardview.widget.CardView
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="30dp"
-        android:background="@color/white"
-        android:outlineSpotShadowColor="@color/white"
-        app:cardElevation="28dp"
-        app:cardCornerRadius="8dp">
+        android:layout_height="match_parent"
+        android:padding="16dp">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewTickets"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="8dp"
-            tools:listitem="@layout/item_ticket" />
+            android:layout_height="match_parent" />
 
-    </androidx.cardview.widget.CardView>
+    </RelativeLayout>
+
 
 </LinearLayout>

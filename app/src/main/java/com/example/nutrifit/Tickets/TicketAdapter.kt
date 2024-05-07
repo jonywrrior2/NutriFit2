@@ -25,7 +25,7 @@ class TicketAdapter(private val ticketsList: List<Ticket>) :
     override fun onBindViewHolder(holder: TicketViewHolder, position: Int) {
         val currentItem = ticketsList[position]
 
-        holder.tipoTicketTextView.text = currentItem.tipoTicket
+        holder.tipoTicketTextView.text = currentItem.tipoComentario
         holder.comentarioTicketTextView.text = currentItem.comentario
     }
 
