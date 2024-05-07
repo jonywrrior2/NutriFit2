@@ -61,7 +61,6 @@ class NutrientesActivity : AppCompatActivity() {
 
         }
 
-        val guardarAlimentoButton: Button = findViewById(R.id.guardarAlimento)
         guardarAlimentoButton.setOnClickListener {
 
             val comidaNutriente = txtNombre.text.toString()
@@ -75,13 +74,13 @@ class NutrientesActivity : AppCompatActivity() {
             DatabaseManagerMenu.addMenu(
                 menu,
                 onSuccess = {
-                    Log.d("DatabaseManagerMenu", "Menu added successfully")
-                    Toast.makeText(this, "Menu added successfully", Toast.LENGTH_SHORT).show()
+                    Log.d("DatabaseManagerMenu", "Menu añadido correctamente")
+                    Toast.makeText(this, "Menu añadido correctamente", Toast.LENGTH_SHORT).show()
                 },
                 onFailure = { exception ->
 
-                    Log.e("DatabaseManagerMenu", "Error adding menu", exception)
-                    Toast.makeText(this, "Error adding menu: ${exception.message}", Toast.LENGTH_SHORT).show()
+                    Log.e("DatabaseManagerMenu", "Error al añadir el menú", exception)
+                    Toast.makeText(this, "Error al añadir el menú: ${exception.message}", Toast.LENGTH_SHORT).show()
                 }
             )
 

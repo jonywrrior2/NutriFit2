@@ -41,14 +41,13 @@
                     .addOnSuccessListener { querySnapshot ->
                         val menus = mutableListOf<Menu>()
                         for (document in querySnapshot.documents) {
-                            val menuData = document.data?.toMutableMap()
-                            val alimentos = menuData?.get("alimento") as String
-                            val cantidad = (menuData?.get("cantidad") as Long).toInt()
-                            val kcal = (menuData?.get("kcal") as Long).toDouble()
-                            val proteinas = (menuData?.get("proteinas") as Long).toDouble()
-                            val tipo = menuData?.get("tipo") as String
-                            val unidad = menuData?.get("unidad") as String
-                            val fechaStr = menuData?.get("fecha") as String
+                            val alimentos = document.getString("alimentos") ?: ""
+                            val cantidad = (document.getLong("cantidad") ?: 0).toInt()
+                            val kcal = (document.getLong("kcal") ?: 0).toDouble()
+                            val proteinas = (document.getLong("proteinas") ?: 0).toDouble()
+                            val tipo = document.getString("tipo") ?: ""
+                            val unidad = document.getString("unidad") ?: ""
+                            val fechaStr = document.getString("fecha") ?: ""
                             val usuario = email
                             val menu = Menu(alimentos, cantidad, kcal, proteinas, unidad, usuario, tipo, fechaStr)
 
@@ -58,9 +57,10 @@
                     }
                     .addOnFailureListener { e -> onFailure(e) }
             } else {
-                onFailure(Exception("User not logged in"))
+                onFailure(Exception("Usuario no logueado"))
             }
         }
+
 
         fun eliminarMenu(
             menu: Menu,
@@ -70,7 +70,7 @@
 
             val menuDocument = menusCollection
                 .whereEqualTo("usuario", menu.usuario)
-                .whereEqualTo("alimento", menu.alimentos)
+                .whereEqualTo("alimentos", menu.alimentos)
                 .whereEqualTo("cantidad", menu.cantidad)
                 .whereEqualTo("kcal", menu.kcal)
                 .whereEqualTo("proteinas", menu.proteinas)
@@ -86,16 +86,16 @@
                         val document = documents.documents[0]
                         document.reference.delete()
                             .addOnSuccessListener {
-                                Log.d("DatabaseManagerMenu", "Menu deleted successfully")
+                                Log.d("DatabaseManagerMenu", "Menu eliminado correctamente")
                                 onSuccess()
                             }
                             .addOnFailureListener { e ->
-                                Log.e("DatabaseManagerMenu", "Error deleting menu", e)
+                                Log.e("DatabaseManagerMenu", "Error al eliminar el menú", e)
                                 onFailure(e)
                             }
                     } else {
 
-                        onFailure(Exception("Menu not found"))
+                        onFailure(Exception("Menu no encontrado"))
                     }
                 }
                 .addOnFailureListener { e ->
