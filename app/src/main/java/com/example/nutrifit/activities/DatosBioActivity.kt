@@ -2,6 +2,7 @@ package com.example.nutrifit.activities
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -39,4 +40,23 @@ class DatosBioActivity : AppCompatActivity() {
             )
         }
     }
+
+
+    fun restarPeso(view: View) {
+        val txtPesoUser: TextView = findViewById(R.id.txtPesoUserB)
+        var pesoActual = txtPesoUser.text.toString().toDoubleOrNull() ?: 0.0
+        if (pesoActual > 0.0) {
+            pesoActual -= 0.1
+            txtPesoUser.text = String.format("%.1f", pesoActual)
+        }
+    }
+
+    fun sumarPeso(view: View) {
+        val txtPesoUser: TextView = findViewById(R.id.txtPesoUserB)
+        var pesoActual = txtPesoUser.text.toString().toDoubleOrNull() ?: 0.0
+        pesoActual += 0.1
+        txtPesoUser.text = String.format("%.1f", pesoActual)
+    }
+
+
 }
