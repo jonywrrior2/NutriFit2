@@ -30,9 +30,17 @@ class PerfilActivity : AppCompatActivity() {
         val txtNombreyApellidos : TextView = findViewById(R.id.txtNombrePerfil)
 
         val txtInfoPersonal : TextView = findViewById(R.id.txtInfoPersonal)
+        val txtDatosBiometricos : TextView = findViewById(R.id.txtDatosBio)
 
         txtInfoPersonal.setOnClickListener {
             intent = Intent(this@PerfilActivity, InfoPersonalActivity::class.java)
+            intent.putExtra("email", currentUserEmail)
+            startActivity(intent)
+            finish()
+        }
+
+        txtDatosBiometricos.setOnClickListener {
+            intent = Intent(this@PerfilActivity, DatosBioActivity::class.java)
             intent.putExtra("email", currentUserEmail)
             startActivity(intent)
             finish()
