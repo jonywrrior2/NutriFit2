@@ -27,7 +27,7 @@
             </intent-filter>
         </activity>
 
-        <!-- Main Activity-->
+
         <activity
             android:name=".activities.MainActivity"
             android:exported="true"
@@ -35,71 +35,71 @@
 
         </activity>
 
-        <!-- Login Activity-->
+
         <activity
             android:name=".activities.LoginActivity"
             android:exported="true"
             android:theme="@style/Theme.NutriFit">
-
         </activity>
 
         <activity
             android:name=".activities.SignUpDPActivity"
             android:exported="true"
             android:theme="@style/Theme.NutriFit">
-
         </activity>
 
         <activity
             android:name=".activities.SignUpDBActivity"
             android:exported="true"
             android:theme="@style/Theme.NutriFit">
-
         </activity>
 
         <activity
             android:name=".activities.RecuperarPassActivity"
             android:exported="true"
             android:theme="@style/Theme.Material3.Light">
-
         </activity>
 
         <activity
             android:name=".activities.AnhadirComidaActivity"
             android:exported="true"
             android:theme="@style/Theme.NutriFit">
-
         </activity>
 
         <activity
             android:name=".activities.NutrientesActivity"
             android:exported="true"
             android:theme="@style/Theme.NutriFit">
-
-
         </activity>
 
         <activity
             android:name=".activities.SugerenciasActivity"
             android:exported="true"
             android:theme="@style/Theme.NutriFit">
-
-
         </activity>
 
         <activity
             android:name=".activities.MisSugerenciasActivity"
             android:exported="true"
             android:theme="@style/Theme.NutriFit">
-
-
         </activity>
+
         <activity
             android:name=".activities.PerfilActivity"
             android:exported="true"
             android:theme="@style/Theme.NutriFit">
+        </activity>
 
+        <activity
+            android:name=".activities.InfoPersonalActivity"
+            android:exported="true"
+            android:theme="@style/Theme.NutriFit">
+        </activity>
 
+        <activity
+            android:name=".activities.DatosBioActivity"
+            android:exported="true"
+            android:theme="@style/Theme.NutriFit">
         </activity>
 
     </application>
