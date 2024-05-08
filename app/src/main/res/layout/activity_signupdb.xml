@@ -42,7 +42,7 @@
             android:background="#30ffffff"
             android:drawablePadding="20dp"
             android:hint="@string/altura"
-            android:inputType="number"
+            android:inputType="numberDecimal"
             android:textColor="@color/white"
             android:padding="20dp" />
     </com.google.android.material.textfield.TextInputLayout>
