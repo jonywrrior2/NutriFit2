@@ -78,7 +78,6 @@
         android:textSize="17sp"
         android:gravity="center_vertical"
         android:textColor="@color/white"
-        android:text="Cristian"
 />
 
     <TextView
@@ -113,7 +112,6 @@
         android:textSize="17sp"
         android:gravity="center_vertical"
         android:textColor="@color/white"
-        android:text="Bersabe Atienza"
         />
 
     <TextView
@@ -147,7 +145,6 @@
         android:textSize="17sp"
         android:gravity="center_vertical"
         android:textColor="@color/white"
-        android:text="cristianbersabe@gmail.com"
         />
 
     <TextView
@@ -179,7 +176,7 @@
         android:layout_height="wrap_content"
         android:text="@string/masculino"
         android:layout_marginStart="20sp"
-        android:checked="true"
+        android:clickable="false"
         android:textColor="@color/white" />
 
     <com.google.android.material.checkbox.MaterialCheckBox
@@ -187,6 +184,7 @@
         android:layout_width="wrap_content"
         android:layout_marginStart="20sp"
         android:layout_height="wrap_content"
+        android:clickable="false"
         android:text="@string/femenino"
         android:textColor="@color/white" />
 

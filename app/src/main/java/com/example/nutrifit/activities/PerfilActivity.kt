@@ -33,6 +33,7 @@ class PerfilActivity : AppCompatActivity() {
 
         txtInfoPersonal.setOnClickListener {
             intent = Intent(this@PerfilActivity, InfoPersonalActivity::class.java)
+            intent.putExtra("email", currentUserEmail)
             startActivity(intent)
             finish()
         }

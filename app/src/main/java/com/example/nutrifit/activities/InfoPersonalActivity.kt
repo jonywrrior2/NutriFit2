@@ -5,10 +5,10 @@ import android.widget.CheckBox
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.nutrifit.R
-
+import com.example.nutrifit.dbUser.DatabaseManagerUser
+import com.example.nutrifit.pojo.User
 
 class InfoPersonalActivity : AppCompatActivity() {
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,7 +21,26 @@ class InfoPersonalActivity : AppCompatActivity() {
         val txtEmailUser: TextView = findViewById(R.id.txtCorreoUserInfo)
 
 
+        val currentUserEmail = intent.getStringExtra("email")
+
+        currentUserEmail?.let { email ->
+            DatabaseManagerUser.getUserByEmail(email,
+                onSuccess = { user ->
+                    user?.let {
+                        txtNombreUser.text = it.nombre
+                        txtApellidosUser.text = it.apellidos
+                        txtEmailUser.text = it.email
+                        if (it.sexo == "Masculino") {
+                            checkBoxMasculino.isChecked = true
+                        } else if (it.sexo == "Femenino") {
+                            checkBoxFemenino.isChecked = true
+                        }
+                    }
+                },
+                onFailure = { exception ->
+
+                }
+            )
+        }
     }
-
-
 }
