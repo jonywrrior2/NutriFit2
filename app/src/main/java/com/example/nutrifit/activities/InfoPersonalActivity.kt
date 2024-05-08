@@ -1,6 +1,8 @@
 package com.example.nutrifit.activities
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import android.widget.CheckBox
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -19,6 +21,13 @@ class InfoPersonalActivity : AppCompatActivity() {
         val txtNombreUser: TextView = findViewById(R.id.txtNombreUserInfo)
         val txtApellidosUser: TextView = findViewById(R.id.txtApellidosUserInfo)
         val txtEmailUser: TextView = findViewById(R.id.txtCorreoUserInfo)
+        val volverButton: Button = findViewById(R.id.volverPerfilActivityP)
+
+        volverButton.setOnClickListener {
+            intent = Intent(this@InfoPersonalActivity, PerfilActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
 
 
         val currentUserEmail = intent.getStringExtra("email")
