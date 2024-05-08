@@ -25,7 +25,6 @@ class NutrientesActivity : AppCompatActivity() {
 
 
 
-
         val nombre = intent.getStringExtra("nombre")
         var calorias = intent.getDoubleExtra("kcal", 0.0)
         var proteinas = intent.getDoubleExtra("proteinas", 0.0)

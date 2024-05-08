@@ -14,5 +14,8 @@ data class User(
         val objetivo: String,
         var calorias: Int,
         var proteinas: Int
-    ): Serializable {}
+    ): Serializable {
+        constructor() : this("", "", "", 0, "", 0.0, 0.0, "", "", 0, 0)
+    }
+
 
