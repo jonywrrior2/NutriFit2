@@ -56,14 +56,14 @@ class SignUpDBActivity : AppCompatActivity() {
         btnRegistar.setOnClickListener {
             // Obtener los datos adicionales del usuario
             val edad = binding.edadTxt.text.toString().toIntOrNull() ?: 0
-            val altura = binding.alturaTxt.text.toString().toDoubleOrNull() ?: 0.0
+            val altura = binding.alturaTxt.text.toString().toIntOrNull() ?: 0
             val peso = binding.pesoTxt.text.toString().toDoubleOrNull() ?: 0.0
             val nivelActividad = binding.factorActividadSpinner.selectedItem.toString()
             val objetivo = binding.objetivoSpinner.selectedItem.toString()
 
             // Verificar si los campos están completos y dentro de los rangos
             if (email != null && nombre != null && apellidos != null && contrasenha != null && sexo != null) {
-                if (altura in 100.0..250.0 ) {
+                if (altura in 100..250 ) {
                     if (edad in 10..100) {
                         if (peso in 20.0..200.0) {
                             // Crear el objeto User con todos los datos

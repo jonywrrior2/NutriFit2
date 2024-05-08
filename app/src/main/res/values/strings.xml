@@ -78,6 +78,8 @@
     <string name="informaci_on_personal">Informacición personal</string>
     <string name="masculino">Masculino</string>
     <string name="femenino">Femenino</string>
+    <string name="peso_kg">Peso (kg)</string>
+    <string name="altura_cm">Altura (cm)</string>
     <string-array name="factor_actividad_values">
             <item>Poco o ningún ejercicio</item>
             <item>Ejercicio ligero (1-3 días a la semana)</item>

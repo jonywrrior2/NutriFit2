@@ -17,6 +17,7 @@ class DatosBioActivity : AppCompatActivity() {
 
         val volverButton: Button = findViewById(R.id.volverPerfilActivityB)
         val txtPesoUser: TextView = findViewById(R.id.txtPesoUserB)
+        val txtAlturaUser: TextView = findViewById(R.id.txtAlturaUserB)
 
         volverButton.setOnClickListener {
             intent = Intent(this@DatosBioActivity, PerfilActivity::class.java)
@@ -31,6 +32,8 @@ class DatosBioActivity : AppCompatActivity() {
                 onSuccess = { user ->
                     user?.let {
                         txtPesoUser.text = it.peso.toString()
+                        txtAlturaUser.text = it.altura.toString()
+
 
                     }
                 },
@@ -57,6 +60,29 @@ class DatosBioActivity : AppCompatActivity() {
         pesoActual += 0.1
         txtPesoUser.text = String.format("%.1f", pesoActual)
     }
+
+
+    fun restarAltura(view: View) {
+        val txtAlturaUser: TextView = findViewById(R.id.txtAlturaUserB)
+        var alturaActual = txtAlturaUser.text.toString().toIntOrNull() ?: 0
+        if (alturaActual > 0) {
+            alturaActual -= 1
+            txtAlturaUser.text = alturaActual.toString()
+        }
+    }
+
+    fun sumarAltura(view: View) {
+        val txtAlturaUser: TextView = findViewById(R.id.txtAlturaUserB)
+        var alturaActual = txtAlturaUser.text.toString().toIntOrNull() ?: 0
+        if (alturaActual == 0) {
+            alturaActual = 1
+        } else {
+            alturaActual += 1
+        }
+        txtAlturaUser.text = alturaActual.toString()
+    }
+
+
 
 
 }

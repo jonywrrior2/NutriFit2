@@ -8,14 +8,14 @@ data class User(
         val email: String,
         val edad: Int,
         val sexo: String,
-        val altura: Double,
+        val altura: Int,
         val peso: Double,
         val nivelActividad: String,
         val objetivo: String,
         var calorias: Int,
         var proteinas: Int
     ): Serializable {
-        constructor() : this("", "", "", 0, "", 0.0, 0.0, "", "", 0, 0)
+        constructor() : this("", "", "", 0, "", 0, 0.0, "", "", 0, 0)
     }
 
 
