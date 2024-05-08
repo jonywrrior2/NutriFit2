@@ -68,6 +68,10 @@ class MainActivity : AppCompatActivity(), CalendarioAdapter.OnItemListener {
         if (CalendarioUtils.selectedDate == null) {
             CalendarioUtils.selectedDate = LocalDate.now()
         }
+
+        if (selectedLongClickDate == null) {
+            selectedLongClickDate = LocalDate.now()
+        }
         setWeekView()
     }
 
