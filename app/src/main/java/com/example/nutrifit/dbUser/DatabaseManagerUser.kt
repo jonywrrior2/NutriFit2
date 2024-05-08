@@ -2,7 +2,7 @@ package com.example.nutrifit.dbUser
 
 import com.example.nutrifit.pojo.User
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.Query
+
 
 object DatabaseManagerUser {
     private val db = FirebaseFirestore.getInstance()

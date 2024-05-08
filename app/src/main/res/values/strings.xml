@@ -75,6 +75,9 @@
     <string name="mi_perfil">Mi perfil</string>
     <string name="informaci_n_personal">Información personal</string>
     <string name="datos_biom_tricos2">Datos biométricos</string>
+    <string name="informaci_on_personal">Informacición personal</string>
+    <string name="masculino">Masculino</string>
+    <string name="femenino">Femenino</string>
     <string-array name="factor_actividad_values">
             <item>Poco o ningún ejercicio</item>
             <item>Ejercicio ligero (1-3 días a la semana)</item>

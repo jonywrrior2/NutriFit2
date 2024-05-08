@@ -2,11 +2,12 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.NutriFit" parent="Theme.AppCompat.Light.NoActionBar">
 
-    <item name="android:windowIsTranslucent"> true</item> <!-- Esto hace que no aparezca el logo de la app al iniciarla -->
+    <item name="android:windowIsTranslucent"> true</item>
 
     </style>
 
     <style name="Theme.NutriFit" parent="Base.Theme.NutriFit" />
+
 
 
 </resources>

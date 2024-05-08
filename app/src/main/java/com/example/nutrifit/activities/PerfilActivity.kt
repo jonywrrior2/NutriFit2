@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.nutrifit.R
+import com.example.nutrifit.dbUser.DatabaseManagerUser
 import com.example.nutrifit.pojo.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -28,27 +29,27 @@ class PerfilActivity : AppCompatActivity() {
         val volverButton : Button = findViewById(R.id.volverMainActivityP)
         val txtNombreyApellidos : TextView = findViewById(R.id.txtNombrePerfil)
 
+        val txtInfoPersonal : TextView = findViewById(R.id.txtInfoPersonal)
+
+        txtInfoPersonal.setOnClickListener {
+            intent = Intent(this@PerfilActivity, InfoPersonalActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
         currentUserEmail?.let { email ->
-
-            firestore.collection("usuarios")
-                .whereEqualTo("email", email)
-                .get()
-                .addOnSuccessListener { querySnapshot ->
-                    if (!querySnapshot.isEmpty) {
-                        val user = querySnapshot.documents[0].toObject(User::class.java)
-                        user?.let {
-                            txtNombreyApellidos.text = "${it.nombre} ${it.apellidos}"
-                        }
-                    } else {
-
-                        mostrarAlerta("Usuario no encontrado", "El usuario con correo electrónico $email no fue encontrado en la base de datos.")
-                    }
-                }
-                .addOnFailureListener { exception ->
-
+            DatabaseManagerUser.getUserByEmail(email,
+                onSuccess = { user ->
+                    user?.let {
+                        txtNombreyApellidos.text = "${it.nombre} ${it.apellidos}"
+                    } ?: mostrarAlerta("Usuario no encontrado", "El usuario con correo electrónico $email no fue encontrado en la base de datos.")
+                },
+                onFailure = { exception ->
                     mostrarAlerta("Error", "Error al consultar la base de datos: ${exception.message}")
                 }
+            )
         }
+
 
         volverButton.setOnClickListener {
             intent = Intent(this@PerfilActivity, MainActivity::class.java)
