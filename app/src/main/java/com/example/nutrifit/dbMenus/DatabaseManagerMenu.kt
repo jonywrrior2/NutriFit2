@@ -43,8 +43,8 @@
                         for (document in querySnapshot.documents) {
                             val alimentos = document.getString("alimentos") ?: ""
                             val cantidad = (document.getLong("cantidad") ?: 0).toInt()
-                            val kcal = (document.getLong("kcal") ?: 0).toDouble()
-                            val proteinas = (document.getLong("proteinas") ?: 0).toDouble()
+                            val kcal = (document.getDouble("kcal") ?: 0).toDouble()
+                            val proteinas = (document.getDouble("proteinas") ?: 0).toDouble()
                             val tipo = document.getString("tipo") ?: ""
                             val unidad = document.getString("unidad") ?: ""
                             val fechaStr = document.getString("fecha") ?: ""
