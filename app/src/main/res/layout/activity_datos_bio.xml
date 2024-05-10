@@ -244,6 +244,17 @@
             android:padding="20dp"
             android:textColor="@color/white" />
 
+        <Button
+            android:id="@+id/guardarDatosBio"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="25dp"
+            android:backgroundTint="@color/gray2"
+            android:textColor="@color/white"
+            android:text="@string/registrar"
+            android:textSize="25sp" />
+
 
 
     </LinearLayout>

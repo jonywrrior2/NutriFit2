@@ -24,6 +24,7 @@ class DatosBioActivity : AppCompatActivity() {
         val txtEdad : TextView = findViewById(R.id.txtEdadUserB)
         val factorActividadSpinner : Spinner = findViewById(R.id.factorActividadSpinnerB)
         val objetivoSpinner : Spinner = findViewById(R.id.objetivoSpinnerB)
+        val guardarDatosBio : Button = findViewById(R.id.guardarDatosBio)
 
         val factorActividadAdapter = ArrayAdapter.createFromResource(
             this,
