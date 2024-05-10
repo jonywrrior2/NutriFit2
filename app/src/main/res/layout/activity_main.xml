@@ -141,7 +141,7 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="75dp"
-            android:layout_marginHorizontal="20dp"
+            android:layout_marginHorizontal="10dp"
             android:layout_marginTop="40dp"
             app:cardBackgroundColor="@color/grayOscuro"
             android:outlineSpotShadowColor="@color/white"
@@ -208,7 +208,7 @@
                         android:textColor="@color/white"
                         android:textSize="15sp"
                         android:layout_marginTop="8dp"
-                        android:layout_marginStart="5dp"/>
+                        android:layout_marginStart="3dp"/>
 
                     <TextView
                         android:id="@+id/pDesayuno"
@@ -219,7 +219,7 @@
                         android:textColor="@color/white"
                         android:textSize="15sp"
                         android:layout_marginTop="8dp"
-                        android:layout_marginStart="5dp"/>
+                        android:layout_marginStart="3dp"/>
                 </LinearLayout>
 
             </LinearLayout>
@@ -229,7 +229,7 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="75dp"
-            android:layout_marginHorizontal="20dp"
+            android:layout_marginHorizontal="10dp"
             android:layout_marginTop="40dp"
             app:cardBackgroundColor="@color/grayOscuro"
             android:outlineSpotShadowColor="@color/white"
@@ -296,7 +296,7 @@
                         android:textColor="@color/white"
                         android:textSize="15sp"
                         android:layout_marginTop="8dp"
-                        android:layout_marginStart="5dp"/>
+                        android:layout_marginStart="3dp"/>
 
                     <TextView
                         android:id="@+id/pAlmuerzo"
@@ -307,7 +307,7 @@
                         android:textColor="@color/white"
                         android:textSize="15sp"
                         android:layout_marginTop="8dp"
-                        android:layout_marginStart="5dp"/>
+                        android:layout_marginStart="3dp"/>
                 </LinearLayout>
 
             </LinearLayout>
@@ -316,7 +316,7 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="75dp"
-            android:layout_marginHorizontal="20dp"
+            android:layout_marginHorizontal="10dp"
             android:layout_marginTop="40dp"
             app:cardBackgroundColor="@color/grayOscuro"
             android:outlineSpotShadowColor="@color/white"
@@ -385,7 +385,7 @@
                     android:textColor="@color/white"
                     android:textSize="15sp"
                     android:layout_marginTop="8dp"
-                    android:layout_marginStart="5dp"/>
+                    android:layout_marginStart="3dp"/>
 
                 <TextView
                     android:id="@+id/pMerienda"
@@ -395,7 +395,7 @@
                     android:text="@string/proteina"
                     android:textColor="@color/white"
                     android:layout_marginTop="8dp"
-                    android:layout_marginStart="5dp"
+                    android:layout_marginStart="3dp"
                     android:textSize="15sp" />
 
             </LinearLayout>
@@ -408,7 +408,7 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="75dp"
-            android:layout_marginHorizontal="20dp"
+            android:layout_marginHorizontal="10dp"
             android:layout_marginTop="40dp"
             app:cardBackgroundColor="@color/grayOscuro"
             android:outlineSpotShadowColor="@color/white"
@@ -475,7 +475,7 @@
                         android:textColor="@color/white"
                         android:textSize="15sp"
                         android:layout_marginTop="8dp"
-                        android:layout_marginStart="5dp"/>
+                        android:layout_marginStart="3dp"/>
 
                     <TextView
                         android:id="@+id/pCena"
@@ -486,7 +486,7 @@
                         android:textColor="@color/white"
                         android:textSize="15sp"
                         android:layout_marginTop="8dp"
-                        android:layout_marginStart="5dp"/>
+                        android:layout_marginStart="3dp"/>
                 </LinearLayout>
 
             </LinearLayout>
