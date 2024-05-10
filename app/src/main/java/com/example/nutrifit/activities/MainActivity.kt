@@ -21,7 +21,7 @@ import java.util.Locale
 class MainActivity : AppCompatActivity(), CalendarioAdapter.OnItemListener {
     private lateinit var monthYearText: TextView
     private lateinit var calendarRecyclerView: RecyclerView
-    private var selectedLongClickDate: LocalDate? =  LocalDate.now()
+    private var selectedLongClickDate: LocalDate? = LocalDate.now()
     private lateinit var cDesayunoTextView: TextView
     private lateinit var pDesayunoTextView: TextView
     private lateinit var cAlmuerzoTextView: TextView
@@ -39,8 +39,8 @@ class MainActivity : AppCompatActivity(), CalendarioAdapter.OnItemListener {
         initWidgets()
         mAuth = FirebaseAuth.getInstance()
         val cerrarSesionButton: ImageButton = findViewById(R.id.cerrarSesionButton)
-        val ticketButton : ImageButton = findViewById(R.id.sugerenciasButton)
-        val perfilButton : ImageButton = findViewById(R.id.perfilButton)
+        val ticketButton: ImageButton = findViewById(R.id.sugerenciasButton)
+        val perfilButton: ImageButton = findViewById(R.id.perfilButton)
 
         cerrarSesionButton.setOnClickListener {
             mAuth.signOut()
@@ -51,14 +51,14 @@ class MainActivity : AppCompatActivity(), CalendarioAdapter.OnItemListener {
             finish()
         }
 
-        ticketButton.setOnClickListener{
+        ticketButton.setOnClickListener {
             val intent = Intent(this@MainActivity, SugerenciasActivity::class.java)
             startActivity(intent)
 
             finish()
         }
 
-        perfilButton.setOnClickListener{
+        perfilButton.setOnClickListener {
             val intent = Intent(this@MainActivity, PerfilActivity::class.java)
             startActivity(intent)
 
@@ -66,9 +66,9 @@ class MainActivity : AppCompatActivity(), CalendarioAdapter.OnItemListener {
         }
 
 
-
         //Aqui cogemos la fecha de vuelta del Activity de añadir comida
-        selectedLongClickDate = intent.getStringExtra("fechaSeleccionada")?.let { LocalDate.parse(it) }
+        selectedLongClickDate =
+            intent.getStringExtra("fechaSeleccionada")?.let { LocalDate.parse(it) }
         if (CalendarioUtils.selectedDate == null) {
             CalendarioUtils.selectedDate = LocalDate.now()
         }
@@ -76,10 +76,9 @@ class MainActivity : AppCompatActivity(), CalendarioAdapter.OnItemListener {
         if (selectedLongClickDate == null) {
             selectedLongClickDate = LocalDate.now()
         }
+
+        updateCaloriesAndProteins(selectedLongClickDate)
         setWeekView()
-
-
-
 
 
     }
@@ -132,7 +131,6 @@ class MainActivity : AppCompatActivity(), CalendarioAdapter.OnItemListener {
     }
 
 
-
     private fun setWeekView() {
         val currentDate = LocalDate.now()
         val startOfWeek = CalendarioUtils.mondayForDate(CalendarioUtils.selectedDate ?: currentDate)
@@ -174,6 +172,13 @@ class MainActivity : AppCompatActivity(), CalendarioAdapter.OnItemListener {
         selectedLongClickDate = date
 
         val formattedDate = selectedLongClickDate?.toString()
+        updateCaloriesAndProteins(selectedLongClickDate)
+
+
+    }
+
+    private fun updateCaloriesAndProteins(date: LocalDate?) {
+        val formattedDate = date?.toString()
 
         if (formattedDate != null) {
             DatabaseManagerMenu.getUserMenusByDate(formattedDate, onSuccess = { menus ->
@@ -195,7 +200,7 @@ class MainActivity : AppCompatActivity(), CalendarioAdapter.OnItemListener {
                 val totalCalCena = cenaMenus.sumByDouble { it.kcal }
                 val totalProtCena = cenaMenus.sumByDouble { it.proteinas }
 
-
+                // Mostrar calorías y proteínas totales en los TextViews correspondientes
                 cDesayunoTextView.text = "Calorias: " + totalCalDesayuno.toString()
                 pDesayunoTextView.text = "Proteinas: " + totalProtDesayuno.toString() + "g"
 
@@ -207,12 +212,9 @@ class MainActivity : AppCompatActivity(), CalendarioAdapter.OnItemListener {
 
                 cCenaTextView.text = "Calorias: " + totalCalCena.toString()
                 pCenaTextView.text = "Proteinas: " + totalProtCena.toString() + "g"
-
             }, onFailure = {
             })
         }
+
     }
-
-
-
 }
