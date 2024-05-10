@@ -251,6 +251,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="25dp"
             android:backgroundTint="@color/gray2"
+            android:onClick="guardarDatosBio"
             android:textColor="@color/white"
             android:text="@string/registrar"
             android:textSize="25sp" />

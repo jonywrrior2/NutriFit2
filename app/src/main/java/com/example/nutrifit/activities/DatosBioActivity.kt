@@ -8,15 +8,23 @@ import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.Spinner
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.nutrifit.R
+import com.example.nutrifit.comidas.ComidasAdapterMenu
 import com.example.nutrifit.dbUser.DatabaseManagerUser
+import com.example.nutrifit.pojo.User
 
 class DatosBioActivity : AppCompatActivity() {
+
+    private lateinit var signUpDBActivity: SignUpDBActivity
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_datos_bio)
+
+        signUpDBActivity = SignUpDBActivity()
+
 
         val volverButton: Button = findViewById(R.id.volverPerfilActivityB)
         val txtPesoUser: TextView = findViewById(R.id.txtPesoUserB)
@@ -24,7 +32,6 @@ class DatosBioActivity : AppCompatActivity() {
         val txtEdad : TextView = findViewById(R.id.txtEdadUserB)
         val factorActividadSpinner : Spinner = findViewById(R.id.factorActividadSpinnerB)
         val objetivoSpinner : Spinner = findViewById(R.id.objetivoSpinnerB)
-        val guardarDatosBio : Button = findViewById(R.id.guardarDatosBio)
 
         val factorActividadAdapter = ArrayAdapter.createFromResource(
             this,
@@ -179,7 +186,61 @@ class DatosBioActivity : AppCompatActivity() {
         }
     }
 
+    fun guardarDatosBio(view: View) {
+        val currentUserEmail = intent.getStringExtra("email")
 
+        currentUserEmail?.let { email ->
+            val txtPesoUser: TextView = findViewById(R.id.txtPesoUserB)
+            val txtAlturaUser: TextView = findViewById(R.id.txtAlturaUserB)
+            val txtEdad: TextView = findViewById(R.id.txtEdadUserB)
+            val factorActividadSpinner: Spinner = findViewById(R.id.factorActividadSpinnerB)
+            val objetivoSpinner: Spinner = findViewById(R.id.objetivoSpinnerB)
+
+            val peso = txtPesoUser.text.toString().toDoubleOrNull() ?: 0.0
+            val altura = txtAlturaUser.text.toString().toIntOrNull() ?: 0
+            val edad = txtEdad.text.toString().toIntOrNull() ?: 0
+            val nivelActividad = factorActividadSpinner.selectedItem.toString()
+            val objetivo = objetivoSpinner.selectedItem.toString()
+
+
+            DatabaseManagerUser.getUserByEmail(email,
+                onSuccess = { user ->
+                    user?.let {
+
+                        it.peso = peso
+                        it.altura = altura
+                        it.edad = edad
+                        it.nivelActividad = nivelActividad
+                        it.objetivo = objetivo
+
+                        DatabaseManagerUser.updateUser(it,
+                            onSuccess = {
+                                signUpDBActivity.ajustarCaloriasYProteinas(user)
+                                mostrarAlerta("Datos actualizados correctamente pro : ${it.proteinas} calo : ${it.calorias}")
+                            },
+                            onFailure = { exception ->
+                                mostrarAlerta("Error al actualizar los datos")
+
+                            }
+                        )
+                    }
+                },
+                onFailure = { exception ->
+                    mostrarAlerta("Error al obtener los datos del usuario")
+                }
+            )
+        }
+    }
+
+    fun mostrarAlerta(mensaje: String) {
+        val builder = AlertDialog.Builder(this)
+        builder.setMessage(mensaje)
+            .setPositiveButton("Aceptar") { dialog, _ ->
+                dialog.dismiss()
+            }
+            .create()
+            .show()
+    }
 
 
 }

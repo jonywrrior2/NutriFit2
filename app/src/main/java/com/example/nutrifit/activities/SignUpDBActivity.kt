@@ -15,6 +15,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.nutrifit.R
 import com.example.nutrifit.databinding.ActivitySignupdbBinding
+import com.example.nutrifit.dbUser.DatabaseManagerUser
 import com.example.nutrifit.pojo.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -244,7 +245,7 @@ class SignUpDBActivity : AppCompatActivity() {
     }
 
 
-    private fun ajustarCaloriasYProteinas(user: User) {
+     fun ajustarCaloriasYProteinas(user: User) {
         val tmb: Double = if (user.sexo == "Masculino") {
             66.4730 + (13.7516 * user.peso) + (5.0033 * user.altura) - (6.7550 * user.edad)
         } else {
@@ -288,6 +289,13 @@ class SignUpDBActivity : AppCompatActivity() {
         // Asignar las calorías y las proteínas necesarias al objeto User
         user.calorias = caloriasNecesarias
         user.proteinas = proteinasNecesarias
+
+         DatabaseManagerUser.updateUser(user,
+             onSuccess = {
+             },
+             onFailure = { exception ->
+             }
+         )
     }
 
 

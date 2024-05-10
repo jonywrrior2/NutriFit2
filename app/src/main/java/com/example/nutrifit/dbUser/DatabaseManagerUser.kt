@@ -23,4 +23,29 @@ object DatabaseManagerUser {
                 onFailure(exception)
             }
     }
+
+    fun updateUser(user: User, onSuccess: () -> Unit, onFailure: (Exception) -> Unit) {
+        val userMap = hashMapOf<String, Any?>(
+            "nombre" to user.nombre,
+            "apellidos" to user.apellidos,
+            "edad" to user.edad,
+            "sexo" to user.sexo,
+            "altura" to user.altura,
+            "peso" to user.peso,
+            "nivelActividad" to user.nivelActividad,
+            "objetivo" to user.objetivo,
+            "calorias" to user.calorias,
+            "proteinas" to user.proteinas
+        )
+
+        usersCollection.document(user.email)
+            .update(userMap)
+            .addOnSuccessListener {
+                onSuccess()
+            }
+            .addOnFailureListener { exception ->
+                onFailure(exception)
+            }
+    }
+
 }
