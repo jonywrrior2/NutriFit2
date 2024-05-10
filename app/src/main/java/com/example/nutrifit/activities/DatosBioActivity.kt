@@ -216,7 +216,11 @@ class DatosBioActivity : AppCompatActivity() {
                         DatabaseManagerUser.updateUser(it,
                             onSuccess = {
                                 signUpDBActivity.ajustarCaloriasYProteinas(user)
-                                mostrarAlerta("Datos actualizados correctamente pro : ${it.proteinas} calo : ${it.calorias}")
+                                mostrarAlerta("Datos actualizados correctamente,\n\n" +
+                                        "Sus nutrientes necesarios son:\n" +
+                                        "Calorías: ${it.calorias} Kcal\n" +
+                                        "Proteínas: ${it.proteinas} g\n\n")
+
                             },
                             onFailure = { exception ->
                                 mostrarAlerta("Error al actualizar los datos")
