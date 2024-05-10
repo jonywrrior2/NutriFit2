@@ -171,7 +171,6 @@ class MainActivity : AppCompatActivity(), CalendarioAdapter.OnItemListener {
         setWeekView()
         selectedLongClickDate = date
 
-        val formattedDate = selectedLongClickDate?.toString()
         updateCaloriesAndProteins(selectedLongClickDate)
 
 
