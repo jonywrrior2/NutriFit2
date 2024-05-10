@@ -12,8 +12,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.nutrifit.R
 import com.example.nutrifit.calendario.CalendarioAdapter
 import com.example.nutrifit.calendario.CalendarioUtils
+import com.example.nutrifit.dbMenus.DatabaseManagerMenu
 import com.google.firebase.auth.FirebaseAuth
+import java.text.SimpleDateFormat
 import java.time.LocalDate
+import java.util.Locale
 
 class MainActivity : AppCompatActivity(), CalendarioAdapter.OnItemListener {
     private lateinit var monthYearText: TextView
@@ -63,6 +66,7 @@ class MainActivity : AppCompatActivity(), CalendarioAdapter.OnItemListener {
         }
 
 
+
         //Aqui cogemos la fecha de vuelta del Activity de añadir comida
         selectedLongClickDate = intent.getStringExtra("fechaSeleccionada")?.let { LocalDate.parse(it) }
         if (CalendarioUtils.selectedDate == null) {
@@ -73,6 +77,11 @@ class MainActivity : AppCompatActivity(), CalendarioAdapter.OnItemListener {
             selectedLongClickDate = LocalDate.now()
         }
         setWeekView()
+
+
+
+
+
     }
 
     private fun initWidgets() {
@@ -122,6 +131,8 @@ class MainActivity : AppCompatActivity(), CalendarioAdapter.OnItemListener {
         }
     }
 
+
+
     private fun setWeekView() {
         val currentDate = LocalDate.now()
         val startOfWeek = CalendarioUtils.mondayForDate(CalendarioUtils.selectedDate ?: currentDate)
@@ -161,6 +172,45 @@ class MainActivity : AppCompatActivity(), CalendarioAdapter.OnItemListener {
         CalendarioUtils.selectedDate = date
         setWeekView()
         selectedLongClickDate = date
+
+        val formattedDate = selectedLongClickDate?.toString()
+
+        if (formattedDate != null) {
+            DatabaseManagerMenu.getUserMenusByDate(formattedDate, onSuccess = { menus ->
+                // Calcular calorías y proteínas totales para cada tipo de comida
+                val desayunoMenus = menus.filter { it.tipo == "Desayuno" }
+                val almuerzoMenus = menus.filter { it.tipo == "Almuerzo" }
+                val meriendaMenus = menus.filter { it.tipo == "Merienda" }
+                val cenaMenus = menus.filter { it.tipo == "Cena" }
+
+                val totalCalDesayuno = desayunoMenus.sumByDouble { it.kcal }
+                val totalProtDesayuno = desayunoMenus.sumByDouble { it.proteinas }
+
+                val totalCalAlmuerzo = almuerzoMenus.sumByDouble { it.kcal }
+                val totalProtAlmuerzo = almuerzoMenus.sumByDouble { it.proteinas }
+
+                val totalCalMerienda = meriendaMenus.sumByDouble { it.kcal }
+                val totalProtMerienda = meriendaMenus.sumByDouble { it.proteinas }
+
+                val totalCalCena = cenaMenus.sumByDouble { it.kcal }
+                val totalProtCena = cenaMenus.sumByDouble { it.proteinas }
+
+
+                cDesayunoTextView.text = "Calorias: " + totalCalDesayuno.toString()
+                pDesayunoTextView.text = "Proteinas: " + totalProtDesayuno.toString() + "g"
+
+                cAlmuerzoTextView.text = "Calorias: " + totalCalAlmuerzo.toString()
+                pAlmuerzoTextView.text = "Proteinas: " + totalProtAlmuerzo.toString() + "g"
+
+                cMeriendaTextView.text = "Calorias: " + totalCalMerienda.toString()
+                pMeriendaTextView.text = "Proteinas: " + totalProtMerienda.toString() + "g"
+
+                cCenaTextView.text = "Calorias: " + totalCalCena.toString()
+                pCenaTextView.text = "Proteinas: " + totalProtCena.toString() + "g"
+
+            }, onFailure = {
+            })
+        }
     }
 
 

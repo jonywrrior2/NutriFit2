@@ -4,6 +4,8 @@
     import com.example.nutrifit.pojo.Menu
     import com.google.firebase.auth.FirebaseAuth
     import com.google.firebase.firestore.FirebaseFirestore
+    import java.text.SimpleDateFormat
+    import java.util.Locale
 
 
     object DatabaseManagerMenu {
@@ -103,5 +105,50 @@
                     onFailure(e)
                 }
         }
+
+        fun getUserMenusByDate(
+            date: String,
+            onSuccess: (List<Menu>) -> Unit,
+            onFailure: (Exception) -> Unit
+        ) {
+            val currentUserEmail = FirebaseAuth.getInstance().currentUser?.email
+
+            if (currentUserEmail != null) {
+                val db = FirebaseFirestore.getInstance()
+                val menusCollection = db.collection("menus")
+
+
+                val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+                val dateObj = sdf.parse(date)
+                val formattedDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(dateObj)
+
+                menusCollection.whereEqualTo("usuario", currentUserEmail)
+                    .whereEqualTo("fecha", formattedDate)
+                    .get()
+                    .addOnSuccessListener { querySnapshot ->
+                        val menus = mutableListOf<Menu>()
+                        for (document in querySnapshot.documents) {
+                            val alimentos = document.getString("alimentos") ?: ""
+                            val cantidad = (document.getLong("cantidad") ?: 0).toInt()
+                            val kcal = (document.getDouble("kcal") ?: 0.0).toDouble()
+                            val proteinas = (document.getDouble("proteinas") ?: 0.0).toDouble()
+                            val tipo = document.getString("tipo") ?: ""
+                            val unidad = document.getString("unidad") ?: ""
+                            val fechaStr = document.getString("fecha") ?: ""
+                            val usuario = currentUserEmail
+                            val menu = Menu(alimentos, cantidad, kcal, proteinas, unidad, usuario, tipo, fechaStr)
+
+                            menus.add(menu)
+                        }
+                        onSuccess(menus)
+                    }
+                    .addOnFailureListener { e ->
+                        onFailure(e)
+                    }
+            } else {
+                onFailure(Exception("Usuario no logueado"))
+            }
+        }
+
 
     }
