@@ -23,6 +23,7 @@ class DatosBioActivity : AppCompatActivity() {
         val txtAlturaUser: TextView = findViewById(R.id.txtAlturaUserB)
         val txtEdad : TextView = findViewById(R.id.txtEdadUserB)
         val factorActividadSpinner : Spinner = findViewById(R.id.factorActividadSpinnerB)
+        val objetivoSpinner : Spinner = findViewById(R.id.objetivoSpinnerB)
 
         val factorActividadAdapter = ArrayAdapter.createFromResource(
             this,
@@ -34,6 +35,33 @@ class DatosBioActivity : AppCompatActivity() {
 
         // Manejar la selección del Spinner de Factor de Actividad
         factorActividadSpinner.onItemSelectedListener =
+            object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(
+                    parent: AdapterView<*>,
+                    view: View?,
+                    position: Int,
+                    id: Long
+                ) {
+                    val selectedFactor = parent.getItemAtPosition(position).toString()
+
+                }
+
+                override fun onNothingSelected(parent: AdapterView<*>) {
+
+                }
+            }
+
+
+        val objetivoAdapter = ArrayAdapter.createFromResource(
+            this,
+            R.array.array_objetivo,
+            R.layout.spinner_item_layout
+        )
+        objetivoAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        objetivoSpinner.adapter = objetivoAdapter
+
+        // Manejar la selección del Spinner de Factor de Actividad
+        objetivoSpinner.onItemSelectedListener =
             object : AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(
                     parent: AdapterView<*>,
@@ -67,8 +95,10 @@ class DatosBioActivity : AppCompatActivity() {
                         txtEdad.text = it.edad.toString()
 
                         val factorActividadIndex = obtenerIndiceFactorActividad(it.nivelActividad)
-
                         factorActividadSpinner.setSelection(factorActividadIndex)
+
+                        val objetivoIndex = obtenerIndiceObjetivo(it.objetivo)
+                        objetivoSpinner.setSelection(objetivoIndex)
 
 
                     }
@@ -84,6 +114,11 @@ class DatosBioActivity : AppCompatActivity() {
     private fun obtenerIndiceFactorActividad(nivelActividad: String): Int {
         val opcionesFactorActividad = resources.getStringArray(R.array.factor_actividad_values)
         return opcionesFactorActividad.indexOf(nivelActividad)
+    }
+
+    private fun obtenerIndiceObjetivo(objetivo: String): Int {
+        val opcionesObjetivo = resources.getStringArray(R.array.array_objetivo)
+        return opcionesObjetivo.indexOf(objetivo)
     }
 
 
