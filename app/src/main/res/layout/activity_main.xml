@@ -493,6 +493,25 @@
 
         </androidx.cardview.widget.CardView>
 
+        <TextView
+            android:id="@+id/txtCaloriasNecesarias"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:text="@string/calorias_necesarias"
+            android:textSize="16sp"
+            android:layout_marginHorizontal="13dp"
+            android:layout_marginVertical="7dp"/>
+
+        <TextView
+            android:id="@+id/txtCaloriasConsumidas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            android:text="@string/calorias_consumidas"
+            android:layout_marginHorizontal="13dp"/>
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"

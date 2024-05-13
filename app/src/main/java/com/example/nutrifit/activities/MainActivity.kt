@@ -28,6 +28,8 @@ class MainActivity : AppCompatActivity(), CalendarioAdapter.OnItemListener {
     private lateinit var cCenaTextView: TextView
     private lateinit var pCenaTextView: TextView
     private lateinit var mAuth: FirebaseAuth
+    private lateinit var txtCaloriasNecesarias : TextView
+    private lateinit var txtCaloriasConsumidas : TextView
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -97,6 +99,10 @@ class MainActivity : AppCompatActivity(), CalendarioAdapter.OnItemListener {
         pMeriendaTextView = findViewById(R.id.pMerienda)
         cCenaTextView = findViewById(R.id.cCena)
         pCenaTextView = findViewById(R.id.pCena)
+
+        txtCaloriasNecesarias = findViewById(R.id.txtCaloriasNecesarias)
+        txtCaloriasConsumidas = findViewById(R.id.txtCaloriasConsumidas)
+
 
         addFoodTextView1.setOnClickListener {
             val intent = Intent(this, AnhadirComidaActivity::class.java)
@@ -183,6 +189,12 @@ class MainActivity : AppCompatActivity(), CalendarioAdapter.OnItemListener {
                 val almuerzoMenus = menus.filter { it.tipo == "Almuerzo" }
                 val meriendaMenus = menus.filter { it.tipo == "Merienda" }
                 val cenaMenus = menus.filter { it.tipo == "Cena" }
+
+                // Calcular calorías consumidas en ese dia
+                val totalCaloriasConsumidas = menus.sumByDouble { it.kcal }
+                txtCaloriasConsumidas.text = "Calorías consumidas: $totalCaloriasConsumidas"
+
+
 
                 val totalCalDesayuno = desayunoMenus.sumByDouble { it.kcal }
                 val totalProtDesayuno = desayunoMenus.sumByDouble { it.proteinas }
