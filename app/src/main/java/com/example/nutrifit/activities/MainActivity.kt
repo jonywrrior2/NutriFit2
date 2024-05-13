@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageButton
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
@@ -31,6 +32,7 @@ class MainActivity : AppCompatActivity(), CalendarioAdapter.OnItemListener {
     private lateinit var mAuth: FirebaseAuth
     private lateinit var txtCaloriasNecesarias : TextView
     private lateinit var txtCaloriasConsumidas : TextView
+    private lateinit var barraProgeso : ProgressBar
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -108,8 +110,6 @@ class MainActivity : AppCompatActivity(), CalendarioAdapter.OnItemListener {
 
         txtCaloriasNecesarias.text = "Calorías necesarias: $caloriasNecesariasUsuario"
 
-
-
         addFoodTextView1.setOnClickListener {
             val intent = Intent(this, AnhadirComidaActivity::class.java)
             intent.putExtra("tipo", "Desayuno")
@@ -137,6 +137,8 @@ class MainActivity : AppCompatActivity(), CalendarioAdapter.OnItemListener {
             intent.putExtra("fechaSeleccionada", selectedLongClickDate?.toString())
             startActivity(intent)
         }
+
+
     }
 
 
@@ -250,6 +252,10 @@ class MainActivity : AppCompatActivity(), CalendarioAdapter.OnItemListener {
             )
         }
     }
+
+
+
+
 
 
 
