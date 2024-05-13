@@ -110,6 +110,10 @@ class MainActivity : AppCompatActivity(), CalendarioAdapter.OnItemListener {
 
         txtCaloriasNecesarias.text = "Calorías necesarias: $caloriasNecesariasUsuario"
 
+        barraProgeso = findViewById(R.id.barraProgeso)
+
+
+
         addFoodTextView1.setOnClickListener {
             val intent = Intent(this, AnhadirComidaActivity::class.java)
             intent.putExtra("tipo", "Desayuno")
@@ -138,6 +142,9 @@ class MainActivity : AppCompatActivity(), CalendarioAdapter.OnItemListener {
             startActivity(intent)
         }
 
+        val caloriasConsumidas = 1500.0
+        val caloriasNecesarias = 3000.0
+        updateCaloriesProgress(caloriasConsumidas, caloriasNecesarias)
 
     }
 
@@ -228,6 +235,7 @@ class MainActivity : AppCompatActivity(), CalendarioAdapter.OnItemListener {
 
                 cCenaTextView.text = "Calorias: " + totalCalCena.toString()
                 pCenaTextView.text = "Proteinas: " + totalProtCena.toString() + "g"
+
             }, onFailure = {
             })
         }
@@ -254,7 +262,14 @@ class MainActivity : AppCompatActivity(), CalendarioAdapter.OnItemListener {
     }
 
 
-
+    private fun updateCaloriesProgress(caloriasConsumidas: Double, caloriasNecesarias: Double) {
+        if (caloriasNecesarias > 0) {
+            val progress = ((caloriasConsumidas / caloriasNecesarias) * 100).toInt()
+            barraProgeso.progress = progress
+        } else {
+            barraProgeso.progress = 0
+        }
+    }
 
 
 
