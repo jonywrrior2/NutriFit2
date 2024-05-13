@@ -12,6 +12,7 @@ import com.example.nutrifit.R
 import com.example.nutrifit.calendario.CalendarioAdapter
 import com.example.nutrifit.calendario.CalendarioUtils
 import com.example.nutrifit.databases.DatabaseManagerMenu
+import com.example.nutrifit.databases.DatabaseManagerUser
 import com.google.firebase.auth.FirebaseAuth
 import java.time.LocalDate
 
@@ -35,8 +36,8 @@ class MainActivity : AppCompatActivity(), CalendarioAdapter.OnItemListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        initWidgets()
         mAuth = FirebaseAuth.getInstance()
+        initWidgets()
         val cerrarSesionButton: ImageButton = findViewById(R.id.cerrarSesionButton)
         val ticketButton: ImageButton = findViewById(R.id.sugerenciasButton)
         val perfilButton: ImageButton = findViewById(R.id.perfilButton)
@@ -102,6 +103,11 @@ class MainActivity : AppCompatActivity(), CalendarioAdapter.OnItemListener {
 
         txtCaloriasNecesarias = findViewById(R.id.txtCaloriasNecesarias)
         txtCaloriasConsumidas = findViewById(R.id.txtCaloriasConsumidas)
+
+        val caloriasNecesariasUsuario = obtenerCaloriasNecesariasDelUsuario()
+
+        txtCaloriasNecesarias.text = "Calorías necesarias: $caloriasNecesariasUsuario"
+
 
 
         addFoodTextView1.setOnClickListener {
@@ -225,4 +231,26 @@ class MainActivity : AppCompatActivity(), CalendarioAdapter.OnItemListener {
         }
 
     }
+
+    private fun obtenerCaloriasNecesariasDelUsuario() {
+        val userEmail = mAuth.currentUser?.email
+        if (userEmail != null) {
+            DatabaseManagerUser.getUserByEmail(userEmail,
+                onSuccess = { user ->
+                    if (user != null) {
+                        val caloriasNecesarias = user.calorias
+
+                        txtCaloriasNecesarias.text = "Calorías necesarias: $caloriasNecesarias"
+                    } else {
+                    }
+                },
+                onFailure = { exception ->
+
+                }
+            )
+        }
+    }
+
+
+
 }
