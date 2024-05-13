@@ -20,6 +20,8 @@ class InfoPersonalActivity : AppCompatActivity() {
         val txtNombreUser: TextView = findViewById(R.id.txtNombreUserInfo)
         val txtApellidosUser: TextView = findViewById(R.id.txtApellidosUserInfo)
         val txtEmailUser: TextView = findViewById(R.id.txtCorreoUserInfo)
+        val txtProteUser: TextView = findViewById(R.id.valorProtes)
+        val txtCaloriasUser: TextView = findViewById(R.id.valorCalorias)
         val volverButton: Button = findViewById(R.id.volverPerfilActivityP)
 
         volverButton.setOnClickListener {
@@ -43,6 +45,8 @@ class InfoPersonalActivity : AppCompatActivity() {
                         } else if (it.sexo == "Femenino") {
                             checkBoxFemenino.isChecked = true
                         }
+                        txtProteUser.text = it.proteinas.toString() + "g"
+                        txtCaloriasUser.text = it.calorias.toString() +"/kcal"
                     }
                 },
                 onFailure = { exception ->
