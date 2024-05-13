@@ -9,7 +9,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.nutrifit.R
-import com.example.nutrifit.dbMenus.DatabaseManagerMenu
+import com.example.nutrifit.databases.DatabaseManagerMenu
 import com.example.nutrifit.pojo.Menu
 import com.google.firebase.auth.FirebaseAuth
 

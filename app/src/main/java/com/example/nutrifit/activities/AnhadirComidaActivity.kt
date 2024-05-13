@@ -1,6 +1,5 @@
 package com.example.nutrifit.activities
 
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
@@ -13,8 +12,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.nutrifit.R
 import com.example.nutrifit.comidas.ComidasAdapter
 import com.example.nutrifit.comidas.ComidasAdapterMenu
-import com.example.nutrifit.dbAlimentos.DatabaseManager
-import com.example.nutrifit.dbMenus.DatabaseManagerMenu
+import com.example.nutrifit.databases.DatabaseManager
+import com.example.nutrifit.databases.DatabaseManagerMenu
 import com.example.nutrifit.pojo.Alimento
 import com.example.nutrifit.pojo.Menu
 import com.google.android.material.textfield.TextInputEditText

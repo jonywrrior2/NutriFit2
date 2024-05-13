@@ -2,7 +2,6 @@ package com.example.nutrifit.activities
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.util.Log
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
@@ -10,8 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nutrifit.R
 import com.example.nutrifit.Tickets.TicketAdapter
-import com.example.nutrifit.dbMenus.DatabaseManagerMenu
-import com.example.nutrifit.dbTickets.DatabaseManagerTickets
+import com.example.nutrifit.databases.DatabaseManagerTickets
 import com.example.nutrifit.pojo.Ticket
 
 class MisSugerenciasActivity: AppCompatActivity() {

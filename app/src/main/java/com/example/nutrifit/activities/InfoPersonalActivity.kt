@@ -7,8 +7,7 @@ import android.widget.CheckBox
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.nutrifit.R
-import com.example.nutrifit.dbUser.DatabaseManagerUser
-import com.example.nutrifit.pojo.User
+import com.example.nutrifit.databases.DatabaseManagerUser
 
 class InfoPersonalActivity : AppCompatActivity() {
 

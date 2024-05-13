@@ -1,9 +1,7 @@
 package com.example.nutrifit.activities
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.view.MotionEvent
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -15,7 +13,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.nutrifit.R
 import com.example.nutrifit.databinding.ActivitySignupdbBinding
-import com.example.nutrifit.dbUser.DatabaseManagerUser
+import com.example.nutrifit.databases.DatabaseManagerUser
 import com.example.nutrifit.pojo.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore

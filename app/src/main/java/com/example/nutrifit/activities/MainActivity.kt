@@ -1,6 +1,5 @@
 package com.example.nutrifit.activities
 
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -12,11 +11,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.nutrifit.R
 import com.example.nutrifit.calendario.CalendarioAdapter
 import com.example.nutrifit.calendario.CalendarioUtils
-import com.example.nutrifit.dbMenus.DatabaseManagerMenu
+import com.example.nutrifit.databases.DatabaseManagerMenu
 import com.google.firebase.auth.FirebaseAuth
-import java.text.SimpleDateFormat
 import java.time.LocalDate
-import java.util.Locale
 
 class MainActivity : AppCompatActivity(), CalendarioAdapter.OnItemListener {
     private lateinit var monthYearText: TextView

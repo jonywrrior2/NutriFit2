@@ -11,7 +11,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nutrifit.R
 import com.example.nutrifit.activities.AnhadirComidaActivity
-import com.example.nutrifit.dbMenus.DatabaseManagerMenu
+import com.example.nutrifit.databases.DatabaseManagerMenu
 import com.example.nutrifit.pojo.Menu
 import java.time.LocalDate
 

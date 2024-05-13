@@ -1,4 +1,4 @@
-    package com.example.nutrifit.dbMenus
+    package com.example.nutrifit.databases
 
     import android.util.Log
     import com.example.nutrifit.pojo.Menu

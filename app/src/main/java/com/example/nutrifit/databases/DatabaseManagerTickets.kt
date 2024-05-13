@@ -1,7 +1,5 @@
-package com.example.nutrifit.dbTickets
+package com.example.nutrifit.databases
 
-import com.example.nutrifit.dbMenus.DatabaseManagerMenu
-import com.example.nutrifit.pojo.Menu
 import com.example.nutrifit.pojo.Ticket
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -32,9 +30,9 @@ object DatabaseManagerTickets {
         onSuccess: (List<Ticket>) -> Unit,
         onFailure: (Exception) -> Unit
     ) {
-        val email = DatabaseManagerTickets.currentUserEmail
+        val email = currentUserEmail
         if (email != null) {
-            DatabaseManagerTickets.ticketsCollection.whereEqualTo("usuario", email)
+            ticketsCollection.whereEqualTo("usuario", email)
                 .get()
                 .addOnSuccessListener { querySnapshot ->
                     val tickets = mutableListOf<Ticket>()

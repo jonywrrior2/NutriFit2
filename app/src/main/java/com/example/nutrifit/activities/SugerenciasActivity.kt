@@ -11,7 +11,7 @@ import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.nutrifit.R
-import com.example.nutrifit.dbTickets.DatabaseManagerTickets
+import com.example.nutrifit.databases.DatabaseManagerTickets
 import com.example.nutrifit.pojo.Ticket
 import com.google.firebase.auth.FirebaseAuth
 import android.app.AlertDialog
