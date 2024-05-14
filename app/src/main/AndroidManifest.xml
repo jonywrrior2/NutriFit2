@@ -102,6 +102,12 @@
             android:theme="@style/Theme.NutriFit">
         </activity>
 
+        <activity
+            android:name=".activities.TusCambiosActivity"
+            android:exported="true"
+            android:theme="@style/Theme.NutriFit">
+        </activity>
+
     </application>
 
 </manifest>

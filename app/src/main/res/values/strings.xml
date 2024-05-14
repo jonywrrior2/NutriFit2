@@ -83,6 +83,7 @@
     <string name="factor_de_actividad">Factor de actividad</string>
     <string name="calorias_necesarias">Calorias necesarias:</string>
     <string name="calorias_consumidas">Calorias consumidas:</string>
+    <string name="tus_cambios">Tus cambios</string>
     <string-array name="factor_actividad_values">
             <item>Poco o ningún ejercicio</item>
             <item>Ejercicio ligero (1-3 días a la semana)</item>
