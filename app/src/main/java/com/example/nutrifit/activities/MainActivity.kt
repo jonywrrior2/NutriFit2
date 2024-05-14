@@ -83,6 +83,7 @@ class MainActivity : AppCompatActivity(), CalendarioAdapter.OnItemListener {
         setWeekView()
 
 
+        updateCaloriesProgress(selectedLongClickDate)
     }
 
     private fun initWidgets() {
@@ -142,9 +143,7 @@ class MainActivity : AppCompatActivity(), CalendarioAdapter.OnItemListener {
             startActivity(intent)
         }
 
-        val caloriasConsumidas = 1500.0
-        val caloriasNecesarias = 3000.0
-        updateCaloriesProgress(caloriasConsumidas, caloriasNecesarias)
+
 
     }
 
@@ -190,6 +189,7 @@ class MainActivity : AppCompatActivity(), CalendarioAdapter.OnItemListener {
         selectedLongClickDate = date
 
         updateCaloriesAndProteins(selectedLongClickDate)
+        updateCaloriesProgress(selectedLongClickDate)
 
 
     }
@@ -262,7 +262,35 @@ class MainActivity : AppCompatActivity(), CalendarioAdapter.OnItemListener {
     }
 
 
-    private fun updateCaloriesProgress(caloriasConsumidas: Double, caloriasNecesarias: Double) {
+    private fun updateCaloriesProgress(date: LocalDate?) {
+        val userEmail = mAuth.currentUser?.email
+        if (userEmail != null) {
+            DatabaseManagerUser.getUserByEmail(userEmail,
+                onSuccess = { user ->
+                    if (user != null) {
+                        val caloriasNecesarias = user.calorias.toDouble()
+                        val formattedDate = date?.toString()
+
+                        if (formattedDate != null) {
+                            DatabaseManagerMenu.getUserMenusByDate(formattedDate, onSuccess = { menus ->
+                                val caloriasConsumidas = menus.sumByDouble { it.kcal }
+                                updateProgress(caloriasConsumidas, caloriasNecesarias)
+                            }, onFailure = {
+
+                            })
+                        }
+                    } else {
+
+                    }
+                },
+                onFailure = { exception ->
+
+                }
+            )
+        }
+    }
+
+    private fun updateProgress(caloriasConsumidas: Double, caloriasNecesarias: Double) {
         if (caloriasNecesarias > 0) {
             val progress = ((caloriasConsumidas / caloriasNecesarias) * 100).toInt()
             barraProgeso.progress = progress
@@ -270,8 +298,6 @@ class MainActivity : AppCompatActivity(), CalendarioAdapter.OnItemListener {
             barraProgeso.progress = 0
         }
     }
-
-
 
 
 }
