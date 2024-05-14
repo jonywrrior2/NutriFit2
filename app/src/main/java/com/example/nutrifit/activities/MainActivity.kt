@@ -199,13 +199,12 @@ class MainActivity : AppCompatActivity(), CalendarioAdapter.OnItemListener {
 
         if (formattedDate != null) {
             DatabaseManagerMenu.getUserMenusByDate(formattedDate, onSuccess = { menus ->
-                // Calcular calorías y proteínas totales para cada tipo de comida
                 val desayunoMenus = menus.filter { it.tipo == "Desayuno" }
                 val almuerzoMenus = menus.filter { it.tipo == "Almuerzo" }
                 val meriendaMenus = menus.filter { it.tipo == "Merienda" }
                 val cenaMenus = menus.filter { it.tipo == "Cena" }
 
-                // Calcular calorías consumidas en ese dia
+
                 val totalCaloriasConsumidas = menus.sumByDouble { it.kcal }
                 txtCaloriasConsumidas.text = "Calorías consumidas: $totalCaloriasConsumidas"
 
@@ -223,7 +222,6 @@ class MainActivity : AppCompatActivity(), CalendarioAdapter.OnItemListener {
                 val totalCalCena = cenaMenus.sumByDouble { it.kcal }
                 val totalProtCena = cenaMenus.sumByDouble { it.proteinas }
 
-                // Mostrar calorías y proteínas totales en los TextViews correspondientes
                 cDesayunoTextView.text = "Calorias: " + totalCalDesayuno.toString()
                 pDesayunoTextView.text = "Proteinas: " + totalProtDesayuno.toString() + "g"
 
