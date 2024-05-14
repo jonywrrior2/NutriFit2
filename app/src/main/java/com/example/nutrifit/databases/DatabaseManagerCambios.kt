@@ -26,7 +26,7 @@ object DatabaseManagerCambios {
     }
 
 
-    fun getUserTickets(
+    fun getUserCambios(
         onSuccess: (List<Cambios>) -> Unit,
         onFailure: (Exception) -> Unit
     ) {
