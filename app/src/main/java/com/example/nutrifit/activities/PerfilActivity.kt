@@ -30,6 +30,7 @@ class PerfilActivity : AppCompatActivity() {
 
         val txtInfoPersonal : TextView = findViewById(R.id.txtInfoPersonal)
         val txtDatosBiometricos : TextView = findViewById(R.id.txtDatosBio)
+        val txtTusCambios : TextView = findViewById(R.id.txtTusCambios)
 
         txtInfoPersonal.setOnClickListener {
             intent = Intent(this@PerfilActivity, InfoPersonalActivity::class.java)
@@ -40,6 +41,12 @@ class PerfilActivity : AppCompatActivity() {
 
         txtDatosBiometricos.setOnClickListener {
             intent = Intent(this@PerfilActivity, DatosBioActivity::class.java)
+            intent.putExtra("email", currentUserEmail)
+            startActivity(intent)
+            finish()
+        }
+        txtTusCambios.setOnClickListener {
+            intent = Intent(this@PerfilActivity, TusCambiosActivity::class.java)
             intent.putExtra("email", currentUserEmail)
             startActivity(intent)
             finish()

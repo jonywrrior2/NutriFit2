@@ -11,7 +11,10 @@ import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.nutrifit.R
+import com.example.nutrifit.databases.DatabaseManagerCambios
 import com.example.nutrifit.databases.DatabaseManagerUser
+import com.example.nutrifit.pojo.Cambios
+import java.time.LocalDate
 
 class DatosBioActivity : AppCompatActivity() {
 
@@ -200,6 +203,7 @@ class DatosBioActivity : AppCompatActivity() {
             val nivelActividad = factorActividadSpinner.selectedItem.toString()
             val objetivo = objetivoSpinner.selectedItem.toString()
 
+            val cambios = Cambios(email, LocalDate.now().toString(), peso)
 
             DatabaseManagerUser.getUserByEmail(email,
                 onSuccess = { user ->
@@ -219,6 +223,15 @@ class DatosBioActivity : AppCompatActivity() {
                                         "Calorías: ${it.calorias} Kcal\n" +
                                         "Proteínas: ${it.proteinas} g\n\n")
 
+                                DatabaseManagerCambios.addCambios(cambios,
+                                    onSuccess = {
+                                        // Manejar éxito al agregar los cambios
+                                    },
+                                    onFailure = { exception ->
+                                        // Manejar fallo al agregar los cambios
+                                    }
+                                )
+
                             },
                             onFailure = { exception ->
                                 mostrarAlerta("Error al actualizar los datos")
@@ -233,6 +246,7 @@ class DatosBioActivity : AppCompatActivity() {
             )
         }
     }
+
 
     fun mostrarAlerta(mensaje: String) {
         val builder = AlertDialog.Builder(this)
