@@ -225,10 +225,10 @@ class DatosBioActivity : AppCompatActivity() {
 
                                 DatabaseManagerCambios.addCambios(cambios,
                                     onSuccess = {
-                                        // Manejar éxito al agregar los cambios
+
                                     },
                                     onFailure = { exception ->
-                                        // Manejar fallo al agregar los cambios
+
                                     }
                                 )
 
