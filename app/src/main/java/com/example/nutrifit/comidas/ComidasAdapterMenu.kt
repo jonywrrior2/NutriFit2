@@ -30,7 +30,6 @@ class ComidasAdapterMenu(private val context: Context, private var menus: List<M
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.menu_item_layout, parent, false)
         return ComidaViewHolder(itemView)
     }
-
     override fun onBindViewHolder(holder: ComidaViewHolder,     position: Int) {
         val currentItem = menus[position]
         holder.textViewAlimentos.text = context.getString(R.string.alimentos_template, currentItem.alimentos)

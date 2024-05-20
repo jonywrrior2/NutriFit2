@@ -10,7 +10,6 @@ object DatabaseManagerTickets {
     private val ticketsCollection = db.collection("tickets")
     private val currentUserEmail = FirebaseAuth.getInstance().currentUser?.email
 
-
         fun addTicket(
             ticket: Ticket,
             onSuccess: () -> Unit,

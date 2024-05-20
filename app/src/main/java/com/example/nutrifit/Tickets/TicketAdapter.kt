@@ -15,19 +15,16 @@ class TicketAdapter(private val ticketsList: List<Ticket>) :
         val tipoTicketTextView: TextView = itemView.findViewById(R.id.tipoTicket)
         val comentarioTicketTextView: TextView = itemView.findViewById(R.id.comentarioTicket)
     }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TicketViewHolder {
         val itemView = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_ticket, parent, false)
         return TicketViewHolder(itemView)
     }
-
     override fun onBindViewHolder(holder: TicketViewHolder, position: Int) {
         val currentItem = ticketsList[position]
 
         holder.tipoTicketTextView.text = currentItem.tipoComentario
         holder.comentarioTicketTextView.text = currentItem.comentario
     }
-
     override fun getItemCount() = ticketsList.size
 }

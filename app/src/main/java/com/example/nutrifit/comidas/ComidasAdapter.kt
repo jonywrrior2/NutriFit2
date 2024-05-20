@@ -26,13 +26,11 @@ class ComidasAdapter(private val context: Context, private val itemClickListener
             }
         }
     }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ComidaViewHolder {
         val itemView = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_comida, parent, false)
         return ComidaViewHolder(itemView)
     }
-
     override fun onBindViewHolder(holder: ComidaViewHolder, position: Int) {
         val comida = comidas[position]
         val texto = "${comida.nombre}\nKcal: ${comida.calorias} Proteínas: ${comida.proteinas}g Cantidad: ${comida.cantidad} ${comida.unidad}"

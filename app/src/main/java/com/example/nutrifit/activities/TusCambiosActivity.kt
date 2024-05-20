@@ -42,7 +42,7 @@ class TusCambiosActivity : AppCompatActivity() {
             }
         )
     }
-
+    //obtener los cambios del usuario
     private fun obtenerCambiosDeUsuarios(onSuccess: (List<Cambios>) -> Unit, onFailure: (Exception) -> Unit) {
         DatabaseManagerCambios.getUserCambios(
             onSuccess = { cambiosList ->

@@ -23,7 +23,6 @@ object DatabaseManagerUser {
                 onFailure(exception)
             }
     }
-
     fun updateUser(user: User, onSuccess: () -> Unit, onFailure: (Exception) -> Unit) {
         val userMap = hashMapOf<String, Any?>(
             "nombre" to user.nombre,

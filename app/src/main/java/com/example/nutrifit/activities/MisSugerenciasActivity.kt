@@ -50,7 +50,7 @@ class MisSugerenciasActivity: AppCompatActivity() {
         }
 
     }
-
+    //Obtener tickets del usuario logueado
     private fun obtenerTicketsUsuarioActual() {
         DatabaseManagerTickets.getUserTickets(
             onSuccess = { tickets ->

@@ -77,15 +77,15 @@ class SignUpDPActivity : AppCompatActivity() {
         factorActividadAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         sexoSpinner.adapter = factorActividadAdapter
 
-        // Manejar la selección del Spinner de Factor de Actividad
+
         sexoSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
                 val selectedFactor = parent.getItemAtPosition(position).toString()
-                // Aquí puedes hacer algo con el factor de actividad seleccionado
+
             }
 
             override fun onNothingSelected(parent: AdapterView<*>) {
-                // Manejar la situación en la que no se selecciona nada
+
             }
         }
     }

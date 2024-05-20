@@ -259,7 +259,7 @@ class MainActivity : AppCompatActivity(), CalendarioAdapter.OnItemListener {
         }
     }
 
-
+    //Asigna el valor de las calorias de la barra de calorias
     private fun updateCaloriesProgress(date: LocalDate?) {
         val userEmail = mAuth.currentUser?.email
         if (userEmail != null) {
@@ -288,6 +288,7 @@ class MainActivity : AppCompatActivity(), CalendarioAdapter.OnItemListener {
         }
     }
 
+    //Actualiza el progreso de la barra de calorias
     private fun updateProgress(caloriasConsumidas: Double, caloriasNecesarias: Double) {
         if (caloriasNecesarias > 0) {
             val progress = ((caloriasConsumidas / caloriasNecesarias) * 100).toInt()

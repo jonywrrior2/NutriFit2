@@ -55,7 +55,6 @@ class   AnhadirComidaActivity : AppCompatActivity() {
 
 
 
-
         comidasRecyclerView.adapter = adapter
         comidasRecyclerView.layoutManager = LinearLayoutManager(this)
 
@@ -79,6 +78,7 @@ class   AnhadirComidaActivity : AppCompatActivity() {
         obtenerMenusDelUsuarioActual(selectedLongClickDate)
     }
 
+    //Actualiza los textViews de lso menus al agregar un alimento
     private fun actualizarComidasTextView(menus: List<Menu>) {
         val builder = StringBuilder()
         for (menu in menus) {
@@ -90,6 +90,7 @@ class   AnhadirComidaActivity : AppCompatActivity() {
         adapterMenu.actualizarLista(menus)
     }
 
+    //Trae los alimentos de la base de datos filtrando por los caracteres que vayan concordando
     private fun obtenerComidasFiltradas(query: String, callback: (List<Alimento>) -> Unit) {
         val databaseManager = DatabaseManager()
         databaseManager.buscarAlimentos(query) { alimentosEncontrados ->
@@ -120,7 +121,7 @@ class   AnhadirComidaActivity : AppCompatActivity() {
 
     }
 
-
+    //Traer los menus del usuario logueado
      fun obtenerMenusDelUsuarioActual(selectedDate: LocalDate?) {
         val tipoComida = intent.getStringExtra("tipo")
         DatabaseManagerMenu.getUserMenus(

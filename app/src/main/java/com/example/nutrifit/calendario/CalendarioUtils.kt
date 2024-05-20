@@ -25,7 +25,6 @@ object CalendarioUtils {
         return date.format(formatter)
     }
 
-
     fun daysInMonthArray(date: LocalDate): ArrayList<LocalDate?> {
         val daysInMonthArray = ArrayList<LocalDate?>()
         val yearMonth = YearMonth.from(date)

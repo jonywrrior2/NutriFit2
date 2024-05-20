@@ -14,7 +14,6 @@
         private val menusCollection = db.collection("menus")
         private val currentUserEmail = FirebaseAuth.getInstance().currentUser?.email
 
-
         fun addMenu(
             menu: Menu,
             onSuccess: () -> Unit,
@@ -31,7 +30,6 @@
                     onFailure(e)
                 }
         }
-
         fun getUserMenus(
             onSuccess: (List<Menu>) -> Unit,
             onFailure: (Exception) -> Unit
