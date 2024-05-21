@@ -3,9 +3,11 @@ package com.example.nutrifit.activities
 import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import com.example.nutrifit.R
 import com.example.nutrifit.databases.DatabaseManagerUser
 import com.google.firebase.auth.FirebaseAuth
@@ -31,6 +33,14 @@ class PerfilActivity : AppCompatActivity() {
         val txtInfoPersonal : TextView = findViewById(R.id.txtInfoPersonal)
         val txtDatosBiometricos : TextView = findViewById(R.id.txtDatosBio)
         val txtTusCambios : TextView = findViewById(R.id.txtTusCambios)
+        val txtAnhadirAlimento: TextView = findViewById(R.id.txtAnhadirAlimentos)
+        val viewAddAlimento: View = findViewById(R.id.viewAddAlimento)
+
+        if (currentUserEmail == "cristianbersabe@gmail.com") {
+            viewAddAlimento.isVisible = true
+            txtAnhadirAlimento.isVisible = true
+        }
+
 
         txtInfoPersonal.setOnClickListener {
             intent = Intent(this@PerfilActivity, InfoPersonalActivity::class.java)
@@ -47,6 +57,13 @@ class PerfilActivity : AppCompatActivity() {
         }
         txtTusCambios.setOnClickListener {
             intent = Intent(this@PerfilActivity, TusCambiosActivity::class.java)
+            intent.putExtra("email", currentUserEmail)
+            startActivity(intent)
+            finish()
+        }
+
+        txtAnhadirAlimento.setOnClickListener {
+            intent = Intent(this@PerfilActivity, AnhadirAlimentoActivity::class.java)
             intent.putExtra("email", currentUserEmail)
             startActivity(intent)
             finish()

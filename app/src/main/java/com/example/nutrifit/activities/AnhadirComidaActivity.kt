@@ -92,7 +92,7 @@ class   AnhadirComidaActivity : AppCompatActivity() {
 
     //Trae los alimentos de la base de datos filtrando por los caracteres que vayan concordando
     private fun obtenerComidasFiltradas(query: String, callback: (List<Alimento>) -> Unit) {
-        val databaseManager = DatabaseManager()
+        val databaseManager = DatabaseManager
         databaseManager.buscarAlimentos(query) { alimentosEncontrados ->
             callback(alimentosEncontrados)
         }

@@ -1,9 +1,13 @@
     package com.example.nutrifit.databases
 
+    import android.util.Log
     import com.example.nutrifit.pojo.Alimento
+    import com.example.nutrifit.pojo.Cambios
+    import com.example.nutrifit.pojo.Menu
+    import com.example.nutrifit.pojo.Ticket
     import com.google.firebase.firestore.FirebaseFirestore
 
-    class DatabaseManager {
+    object DatabaseManager {
 
         private val db = FirebaseFirestore.getInstance()
         private val alimentosCollection = db.collection("alimentos")
@@ -29,6 +33,20 @@
                 }
                 .addOnFailureListener { exception ->
                     callback(emptyList())
+                }
+        }
+
+        fun addAlimento(
+            alimento: Alimento,
+            onSuccess: () -> Unit,
+            onFailure: (Exception) -> Unit
+        ) {
+            DatabaseManager.alimentosCollection.add(alimento)
+                .addOnSuccessListener {
+                    onSuccess.invoke()
+                }
+                .addOnFailureListener { exception ->
+                    onFailure.invoke(exception)
                 }
         }
     }

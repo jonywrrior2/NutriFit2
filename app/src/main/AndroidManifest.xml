@@ -107,6 +107,11 @@
             android:exported="true"
             android:theme="@style/Theme.NutriFit">
         </activity>
+        <activity
+            android:name=".activities.AnhadirAlimentoActivity"
+            android:exported="true"
+            android:theme="@style/Theme.NutriFit">
+        </activity>
 
     </application>
 
