@@ -109,7 +109,7 @@ class   AnhadirComidaActivity : AppCompatActivity() {
     fun openActivityNutrientes(alimento: Alimento, tipo: String?) {
         val intent = Intent(this, NutrientesActivity::class.java).apply {
             putExtra("nombre", alimento.nombre)
-            putExtra("calorias", alimento.calorias)
+            putExtra("calorias", alimento.kcal)
             putExtra("proteinas", alimento.proteinas)
             putExtra("cantidad", alimento.cantidad)
             putExtra("unidad", alimento.unidad)
